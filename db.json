@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nome": "teste",
+      "email": "teste@gmail.com",
+      "senha": "teste"
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "teste-produto",
+      "quantidade": 1,
+      "descricao": "teste",
+      "imgurl": "",
+      "favoritos": 0
+    }
+  ],
+  "pedidos": [
+    {
+      "id": 1,
+      "valorTotal": "teste-produto",
+      "idUser": 1,
+      "itens": [
+        {
+          
+        }
+      ]
+    }
+  ]
+  
+}
