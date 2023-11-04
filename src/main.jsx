@@ -6,11 +6,12 @@ import Home from "./pages/Home/Home.jsx";
 import Produtos from "./pages/Produtos/Produtos.jsx";
 import Cadastro from "./pages/Cadastro/Cadastro.jsx";
 import Pedidos from "./pages/Pedidos/Pedidos.jsx";
+import { AuthProvider } from "./components/Authenticate/AuthContext.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />
+    element: <Login />,
   },
   {
     path: "/cadastrar",
@@ -34,6 +35,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
