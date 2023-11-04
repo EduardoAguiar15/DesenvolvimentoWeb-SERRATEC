@@ -5,6 +5,12 @@
       "nome": "teste",
       "email": "teste@gmail.com",
       "senha": "teste"
+    },
+    {
+      "nome": "Filipe",
+      "email": "filipe@gmail.com",
+      "senha": "123456",
+      "id": 2
     }
   ],
   "produtos": [
@@ -23,11 +29,8 @@
       "valorTotal": "teste-produto",
       "idUser": 1,
       "itens": [
-        {
-          
-        }
+        {}
       ]
     }
   ]
-  
 }

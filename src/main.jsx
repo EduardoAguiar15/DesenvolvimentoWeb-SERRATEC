@@ -10,10 +10,10 @@ import Pedidos from "./pages/Pedidos/Pedidos.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <Login />
   },
   {
-    path: "/cadastro",
+    path: "/cadastrar",
     element: <Cadastro />,
   },
   {
