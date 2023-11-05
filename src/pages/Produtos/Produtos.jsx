@@ -15,7 +15,7 @@ function Produtos() {
   useEffect(() => {
     getProdutos();
     console.log(userLogged.id);
-  }, [userLogged]);
+  }, [userLogged.id]);
 
   const getProdutos = async () => {
     const response = await api.get("/produtos");
