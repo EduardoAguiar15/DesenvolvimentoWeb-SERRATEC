@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
+import { Navegacao } from "./styled";
 
 const NavBar = () => {
   return (
-    <nav>
-      <Link to={`pedidos`}>Pedidos</Link>
-      <Link to={`produtos`}>Produtos</Link>
-    </nav>
+    <Navegacao>
+      <div className="logo"> 
+        <h1>Retro Games</h1>
+      </div>
+      <div className="paginas">
+        <Link to={`pedidos`}>Pedidos</Link>
+        <Link to={`produtos`}>Produtos</Link>
+      </div>
+    </Navegacao>
   );
 };
 

@@ -5,22 +5,28 @@ import authenticateUser from "../../components/Authenticate";
 import { useAuth } from "../../components/Authenticate/AuthContext";
 import { Log } from "./styles";
 import { GlobalStyle } from "../../Global/globalStyle";
-import gif from "../../assets/Mario.gif"
+import gif from "../../assets/Mario.gif";
+import Mario from "../../assets/MarioParado.jpg";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
   const [message, setMessage] = useState(false);
-  const { setIsLogged } = useAuth();
+  const [imagem, setImagem] = useState(Mario);
+  const { setIsLogged, setUserLogged } = useAuth();
 
   const handleLogin = async () => {
     const user = await authenticateUser(email, senha);
 
     if (user) {
       setIsLogged(true);
+      setUserLogged(user);
       setMessage(false);
-      navigate("/home/produtos");
+      setImagem(gif);
+      setTimeout(() => {
+        navigate("/home/produtos");
+      }, 1900);
     } else {
       setMessage(true);
     }
@@ -31,7 +37,7 @@ function Login() {
       <Log>
         <div className="login-container">
           <h2>Página de Login</h2>
-          <img src={gif} alt="marioGif" />
+          <img src={imagem} alt="marioGif" />
           <input
             type="email"
             placeholder="Email"

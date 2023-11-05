@@ -9,4 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   color: black;
   font-family: 'Roboto', sans-serif;
 }
+
+#root{
+  position: relative;
+}
 `

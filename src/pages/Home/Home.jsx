@@ -2,17 +2,18 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "../../components/NavBar";
-
+import { Cabecalho } from "./styled";
+import { GlobalStyle } from "../../Global/globalStyle";
 
 function Home() {
-
   return (
     <>
-      <header>
+      <Cabecalho>
         <NavBar />
-      </header>
-      
+      </Cabecalho>
+
       <Outlet />
+      <GlobalStyle/>
     </>
   );
 }

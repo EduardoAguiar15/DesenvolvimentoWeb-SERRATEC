@@ -32,7 +32,7 @@ export const Log = styled.div`
     }
 
     img {
-      width: 120px;
+      width: 130px;
       border-radius: 50%;
     }
 
