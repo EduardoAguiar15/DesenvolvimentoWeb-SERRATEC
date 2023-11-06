@@ -36,7 +36,7 @@ function Login() {
     <div>
       <Log>
         <div className="login-container">
-          <h2>Página de Login</h2>
+          <h2>Login</h2>
           <img src={imagem} alt="marioGif" />
           <input
             type="email"

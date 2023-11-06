@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import { api } from "../../api";
 import { MainContent, Rodape } from "./styled";
 import footerImg from "../../assets/bloco-super-mario.png";
+import { formatPrice } from "../../utils/formatPrice";
 
 function Produtos() {
   const { isLogged, userLogged } = useAuth();
@@ -11,11 +12,9 @@ function Produtos() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-
   useEffect(() => {
     getProdutos();
-    console.log(userLogged.id);
-  }, [userLogged.id]);
+  }, []);
 
   const getProdutos = async () => {
     const response = await api.get("/produtos");
@@ -38,6 +37,55 @@ function Produtos() {
     return produto.nome.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+  const comprarProduto = async () => {
+    if (selectedProduct) {
+      const response = await api.get("/pedidos", {
+        params: {
+          idUser: userLogged.id,
+        },
+      });
+
+      let userOrder = response.data[0];
+
+      if (!userOrder) {
+        const newOrder = {
+          valorTotal: selectedProduct.preco,
+          idUser: userLogged.id,
+          itens: [
+            {
+              idProduto: selectedProduct.id,
+              imgurl: selectedProduct.imgurl,
+              nome: selectedProduct.nome,
+              valor: selectedProduct.preco,
+            },
+          ],
+        };
+
+        const createResponse = await api.post("/pedidos", newOrder);
+        userOrder = createResponse.data;
+      } else {
+        const novoValorTotal = userOrder.valorTotal + selectedProduct.preco;
+
+        const novoItem = {
+          idProduto: selectedProduct.id,
+          imgurl: selectedProduct.imgurl,
+          nome: selectedProduct.nome,
+          valor: selectedProduct.preco,
+        };
+
+        const updatedOrder = {
+          valorTotal: novoValorTotal,
+          idUser: userLogged.id,
+          itens: userOrder.itens.concat(novoItem),
+        };
+
+        await api.put(`/pedidos/${userOrder.id}`, updatedOrder);
+      }
+
+      closeModal();
+    }
+  };
+
   return (
     <>
       <MainContent>
@@ -57,9 +105,9 @@ function Produtos() {
                 <li key={produto.id}>
                   <img src={produto.imgurl} alt="imagemDoProduto" />
                   <h2>{produto.nome}</h2>
-                  <p>Preço: R${produto.preco}</p>
+                  <p>Preço: {formatPrice(produto.preco)}</p>
                   <button onClick={() => openModal(produto)}>
-                    Ver Detalhes
+                    Ver Detalhes e Comprar
                   </button>
                 </li>
               )
@@ -71,8 +119,9 @@ function Produtos() {
             <div className="modal-content">
               <img src={selectedProduct.imgurl} alt="imagemDoProduto" />
               <h2>{selectedProduct.nome}</h2>
-              <p>Preço: R${selectedProduct.preco}</p>
+              <p>Preço: {formatPrice(selectedProduct.preco)}</p>
               <p>{selectedProduct.descricao}</p>
+              <button onClick={comprarProduto}>Comprar</button>
               <button onClick={closeModal}>Fechar</button>
             </div>
           </div>

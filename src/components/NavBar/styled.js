@@ -4,26 +4,50 @@ export const Navegacao = styled.nav`
   display: flex;
   justify-content: space-between;
   gap: 30px;
-  padding: 45px 500px 0 0;
+  padding: 12px 500px 0 0;
+  position: relative;
 
   .logo {
     padding-left: 20px;
     h1 {
-      color: red;
+      color: white;
       font-size: 60px;
       font-family: "New Super Mario Font U", sans-serif;
     }
   }
 
-  .paginas{
+  .paginas {
     display: flex;
     gap: 30px;
     align-items: center;
+
+    a {
+      &:hover {
+        position: relative;
+        top: -3px;
+        transition: ease .5s;
+        color: black;
+      }
+    }
   }
 
   a {
     font-family: "New Super Mario Font U", sans-serif;
     font-size: 40px;
-    color: #d10000;
+    color: white;
+  }
+
+  .logout {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    transform: translateY(-100%);
+
+    a{
+      &:hover{
+        color: yellow;
+        transition: ease .5s;
+      }
+    }
   }
 `;

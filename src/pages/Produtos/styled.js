@@ -6,11 +6,13 @@ export const MainContent = styled.div`
   align-items: center;
   gap: 20px;
   margin-top: 20px;
+  padding-bottom: 300px;
 
   input {
     padding: 12px;
     border-radius: 8px;
     width: 240px;
+    background-color: transparent;
   }
 
   ul {
@@ -28,6 +30,15 @@ export const MainContent = styled.div`
       align-items: center;
       margin-bottom: 20px;
       border-radius: 12px;
+      background-color: white;
+      padding-bottom: 20px;
+      cursor: pointer;
+
+      &:hover {
+        position: relative;
+        top: -3px;
+        
+      }
 
       img {
         width: 100%;
@@ -53,7 +64,7 @@ export const MainContent = styled.div`
         border-radius: 8px;
 
         &:hover {
-          background-color: blue;
+          background-color: #00009c;
           transition: ease 0.5s;
         }
       }
@@ -108,23 +119,13 @@ export const MainContent = styled.div`
         margin-bottom: 20px;
 
         &:hover {
-          background-color: blue;
+          background-color: #00009c;
           transition: ease 0.5s;
         }
       }
     }
   }
 
-  footer {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    img {
-      width: 100%;
-      height: 144px;
-      object-fit: cover;
-    }
-  }
 `;
 
 export const Rodape = styled.footer`

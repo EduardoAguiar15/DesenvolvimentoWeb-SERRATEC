@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import imagem from "../../assets/fase.jpg";
+import imagem from "../../assets/header.gif";
 
 
 export const Cabecalho = styled.header`

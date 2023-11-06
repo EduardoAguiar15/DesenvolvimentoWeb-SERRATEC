@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 import { Navegacao } from "./styled";
+import logo from "../../assets/logo.png"
 
 const NavBar = () => {
   return (
     <Navegacao>
       <div className="logo"> 
-        <h1>Retro Games</h1>
+        <img src={logo} alt="logo" />
       </div>
       <div className="paginas">
         <Link to={`pedidos`}>Pedidos</Link>
         <Link to={`produtos`}>Produtos</Link>
       </div>
+        <div className="logout">
+          <Link to={`/`}>logout</Link>
+        </div>
     </Navegacao>
   );
 };
