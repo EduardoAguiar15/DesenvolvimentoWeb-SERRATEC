@@ -11,6 +11,7 @@ const NavBar = () => {
       <div className="paginas">
         <Link to={`pedidos`}>Pedidos</Link>
         <Link to={`produtos`}>Produtos</Link>
+        <Link to={`carrinho`}>Carrinho</Link>
       </div>
         <div className="logout">
           <Link to={`/`}>logout</Link>

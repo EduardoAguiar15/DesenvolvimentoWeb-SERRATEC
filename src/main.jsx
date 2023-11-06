@@ -7,6 +7,8 @@ import Produtos from "./pages/Produtos/Produtos.jsx";
 import Cadastro from "./pages/Cadastro/Cadastro.jsx";
 import Pedidos from "./pages/Pedidos/Pedidos.jsx";
 import { AuthProvider } from "./components/Authenticate/AuthContext.jsx";
+import Carrinho from "./pages/Carrinho/Carrinho.jsx";
+import { CarrinhoProvider } from "./pages/Carrinho/CarrinhoContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
         path: "/home/pedidos",
         element: <Pedidos />,
       },
+      {
+        path: "/home/carrinho",
+        element: <Carrinho />,
+      },
     ],
   },
 ]);
@@ -36,7 +42,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <CarrinhoProvider>
+        <RouterProvider router={router} />
+      </CarrinhoProvider>
     </AuthProvider>
   </React.StrictMode>
 );

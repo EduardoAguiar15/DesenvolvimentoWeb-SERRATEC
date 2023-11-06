@@ -5,12 +5,15 @@ import { api } from "../../api";
 import { MainContent, Rodape } from "./styled";
 import footerImg from "../../assets/bloco-super-mario.png";
 import { formatPrice } from "../../utils/formatPrice";
+import { useCarrinho } from "../Carrinho/CarrinhoContext";
 
 function Produtos() {
   const { isLogged, userLogged } = useAuth();
   const [produtos, setProdutos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { pedidos, setPedidos } = useCarrinho();
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     getProdutos();
@@ -31,6 +34,7 @@ function Produtos() {
 
   const closeModal = () => {
     setSelectedProduct(null);
+    setQuantity(1);
   };
 
   const filteredProdutos = produtos.filter((produto) => {
@@ -38,52 +42,24 @@ function Produtos() {
   });
 
   const comprarProduto = async () => {
-    if (selectedProduct) {
-      const response = await api.get("/pedidos", {
-        params: {
-          idUser: userLogged.id,
-        },
-      });
-
-      let userOrder = response.data[0];
-
-      if (!userOrder) {
-        const newOrder = {
-          valorTotal: selectedProduct.preco,
-          idUser: userLogged.id,
-          itens: [
-            {
-              idProduto: selectedProduct.id,
-              imgurl: selectedProduct.imgurl,
-              nome: selectedProduct.nome,
-              valor: selectedProduct.preco,
-            },
-          ],
-        };
-
-        const createResponse = await api.post("/pedidos", newOrder);
-        userOrder = createResponse.data;
-      } else {
-        const novoValorTotal = userOrder.valorTotal + selectedProduct.preco;
-
-        const novoItem = {
+    const newOrder = {
+      valorTotal: selectedProduct.preco * quantity,
+      idUser: userLogged.id,
+      itens: [
+        {
           idProduto: selectedProduct.id,
           imgurl: selectedProduct.imgurl,
           nome: selectedProduct.nome,
           valor: selectedProduct.preco,
-        };
+          quantidade: quantity,
+        },
+      ],
+    };
 
-        const updatedOrder = {
-          valorTotal: novoValorTotal,
-          idUser: userLogged.id,
-          itens: userOrder.itens.concat(novoItem),
-        };
+    const novosPedidos = [...pedidos, newOrder];
+    setPedidos(novosPedidos);
 
-        await api.put(`/pedidos/${userOrder.id}`, updatedOrder);
-      }
-
-      closeModal();
-    }
+    closeModal();
   };
 
   return (
@@ -107,7 +83,7 @@ function Produtos() {
                   <h2>{produto.nome}</h2>
                   <p>Preço: {formatPrice(produto.preco)}</p>
                   <button onClick={() => openModal(produto)}>
-                    Ver Detalhes e Comprar
+                    Ver Detalhes
                   </button>
                 </li>
               )
@@ -121,7 +97,18 @@ function Produtos() {
               <h2>{selectedProduct.nome}</h2>
               <p>Preço: {formatPrice(selectedProduct.preco)}</p>
               <p>{selectedProduct.descricao}</p>
-              <button onClick={comprarProduto}>Comprar</button>
+                <label>Selecione a quantidade</label>
+              <div className="comprar">
+                <input
+                  className="input-quantidade"
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => setQuantity(parseInt(e.target.value))}
+                  min={1}
+                />
+
+                <button onClick={comprarProduto}>Adicionar ao carrinho</button>
+              </div>
               <button onClick={closeModal}>Fechar</button>
             </div>
           </div>

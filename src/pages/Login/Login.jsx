@@ -36,7 +36,7 @@ function Login() {
     <div>
       <Log>
         <div className="login-container">
-          <h2>Login</h2>
+          <h1>Login</h1>
           <img src={imagem} alt="marioGif" />
           <input
             type="email"
@@ -53,7 +53,8 @@ function Login() {
           <button onClick={handleLogin}>Entrar</button>
           {message && <p>Usuário não encontrado</p>}
           <div className="cadastrar">
-            <Link to={`cadastrar`}>Cadastrar</Link>
+            <p>Não tem uma conta?</p>
+            <Link to={`cadastrar`}>Cadastre-se</Link>
           </div>
         </div>
       </Log>

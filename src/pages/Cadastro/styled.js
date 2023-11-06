@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import imagem from "../../assets/login.jpg";
 
-export const Log = styled.div`
+export const Cad = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@ export const Log = styled.div`
 
   color: #fff;
 
-  .login-container {
+  .cadastro-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,6 +25,14 @@ export const Log = styled.div`
     border: 1px solid rgba(16, 16, 16, 0.21);
     padding: 70px 0;
     width: 30%;
+   
+    form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 
     h1 {
       margin-bottom: 20px;
@@ -51,9 +59,10 @@ export const Log = styled.div`
       color: #fff;
       padding: 10px 20px;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       cursor: pointer;
       margin-top: 10px;
+    
     }
 
     button:hover {
@@ -64,18 +73,9 @@ export const Log = styled.div`
       color: white;
     }
 
-    .cadastrar {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      justify-content: center;
-      margin-top: 12px;
-      a{
+    .voltar {
+      a {
         color: red;
-        font-size: 18px;
-      }
-      p{
-        font-size: 16px;
       }
     }
   }

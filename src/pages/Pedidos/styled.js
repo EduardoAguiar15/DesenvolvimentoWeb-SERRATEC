@@ -38,5 +38,9 @@ export const PedidosDiv = styled.div`
       }
     }
   }
+
+  .mensagem{
+    margin-top: 20px;
+  }
 `
   

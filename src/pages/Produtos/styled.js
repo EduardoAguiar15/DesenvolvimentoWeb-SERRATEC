@@ -84,14 +84,19 @@ export const MainContent = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 10px;
       width: 30%;
-      position: absolute;
+      position: sticky;
       left: 50%;
       transform: translateX(-50%);
-      top: 30%;
+      top: 50px;
       background-color: white;
       border-radius: 12px;
+
+      @media screen and (max-height:950px){
+        position: absolute;
+        top: 30%;
+      }
 
       img {
         width: 100%;
@@ -107,6 +112,20 @@ export const MainContent = styled.div`
         font-weight: bold;
         margin-bottom: 12px;
         padding: 0 40px;
+      }
+
+      .comprar{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        gap: 5px;
+        .input-quantidade{
+          width: 25%;
+        }
+
+        button{
+          margin: 0;
+        }
       }
 
       button {

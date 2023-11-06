@@ -9,7 +9,7 @@
     {
       "nome": "Filipe",
       "email": "filipe@gmail.com",
-      "senha": "123456",
+      "senha": "filipe@1",
       "id": 2
     }
   ],
@@ -124,91 +124,6 @@
     }
   ],
   "pedidos": [
-    {
-      "valorTotal": 119.69999999999999,
-      "idUser": 2,
-      "itens": [
-        {
-          "idProduto": 4,
-          "imgurl": "/imgs/super-mario.jpg",
-          "nome": "Super Mario",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 3,
-          "imgurl": "/imgs/zelda.jpg",
-          "nome": "Zelda",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 5,
-          "imgurl": "/imgs/sonic.jpg",
-          "nome": "Sonic",
-          "valor": 39.9
-        }
-      ],
-      "id": 1
-    },
-    {
-      "valorTotal": 359.09999999999997,
-      "idUser": 1,
-      "itens": [
-        {
-          "idProduto": 4,
-          "imgurl": "/imgs/super-mario.jpg",
-          "nome": "Super Mario",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 1,
-          "imgurl": "/imgs/mortal-kombat.jpg",
-          "nome": "Mortal Kombat",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 2,
-          "imgurl": "/imgs/street-fighter.jpg",
-          "nome": "Street Fighter",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 7,
-          "imgurl": "/imgs/kong.jpg",
-          "nome": "Donkey Kong",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 8,
-          "imgurl": "/imgs/crash.png",
-          "nome": "Crash Bandicoot",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 9,
-          "imgurl": "/imgs/tekken.png",
-          "nome": "Tekken 3",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 10,
-          "imgurl": "/imgs/max-payne.jpg",
-          "nome": "Max Payne",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 11,
-          "imgurl": "/imgs/Halo.jpg",
-          "nome": "Halo",
-          "valor": 39.9
-        },
-        {
-          "idProduto": 12,
-          "imgurl": "/imgs/superstar-soccer.jpg",
-          "nome": "Superstar Soccer",
-          "valor": 39.9
-        }
-      ],
-      "id": 2
-    }
+  
   ]
 }

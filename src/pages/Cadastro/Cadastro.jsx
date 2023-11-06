@@ -1,13 +1,14 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import { useState } from "react";
 import { api } from "../../api";
 import { Link, useNavigate } from "react-router-dom";
+import { Cad } from "./styled";
+import Luigi from "../../assets/Luigi3.jpg";
+import { GlobalStyle } from "../../Global/globalStyle";
 
 function Cadastro() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [message, setMessage] = useState(false);
   const navigate = useNavigate();
 
   const addUser = async (nome, email, senha) => {
@@ -22,10 +23,8 @@ function Cadastro() {
     e.preventDefault();
 
     if (nome == "" || email == "" || senha == "") {
-      setMessage(true)
       return 0;
     } else {
-      setMessage(false)
       addUser(nome, email, senha);
     }
 
@@ -38,32 +37,39 @@ function Cadastro() {
 
   return (
     <div>
-      <h1>Cadastro</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nome Completo"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-        />
-        <button type="submit">Cadastrar</button>
-      </form>
-      {message && <p>Usuário não encontrado</p>}
-      <button>
-        <Link to={`/`}>Voltar para o login</Link>
-      </button>
+      <Cad>
+        <div className="cadastro-container">
+          <h1>Cadastro</h1>
+          <img src={Luigi} alt="Luigi" />
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Nome Completo"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+            />
+            <button type="submit">Cadastrar</button>
+          </form>
+          <div className="voltar">
+
+            <Link to={`/`}>Voltar para o login</Link>
+
+          </div>
+        </div>
+      </Cad>
+      <GlobalStyle />
     </div>
   );
 }

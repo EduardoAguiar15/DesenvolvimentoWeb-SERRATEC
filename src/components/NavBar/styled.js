@@ -26,7 +26,7 @@ export const Navegacao = styled.nav`
         position: relative;
         top: -3px;
         transition: ease .5s;
-        color: black;
+        color: yellow;
       }
     }
   }
