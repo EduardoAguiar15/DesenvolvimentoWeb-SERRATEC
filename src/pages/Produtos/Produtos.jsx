@@ -6,8 +6,8 @@ import { LikeButton, MainContent, Rodape } from "./styled";
 import footerImg from "../../assets/bloco-super-mario.png";
 import { formatPrice } from "../../utils/formatPrice";
 import { useCarrinho } from "../Carrinho/CarrinhoContext";
-import cogumeloVermelho from "../../assets/cogumelo-vermelho.png"
-import cogumeloVazio from "../../assets/cogumelo-vazio.png"
+import cogumeloVermelho from "../../assets/cogumelo-vermelho.png";
+import cogumeloVazio from "../../assets/cogumelo-vazio.png";
 
 function Produtos() {
   const { isLogged, userLogged } = useAuth();
@@ -126,12 +126,28 @@ function Produtos() {
         {selectedProduct && (
           <div className="modal">
             <div className="modal-content">
-              <img className="imagem-produto" src={selectedProduct.imgurl} alt="imagemDoProduto" />
+              <img
+                className="imagem-produto"
+                src={selectedProduct.imgurl}
+                alt="imagemDoProduto"
+              />
               <h2>{selectedProduct.nome}</h2>
+              <h3>Quantidade em estoque: {selectedProduct.quantidade}</h3>
               <div className="favoritos">
                 <LikeButton onClick={toggleFavorite}>
-                  {selectedProduct.favoritos.includes(userLogged.id)
-                    ?  <img className="imagem-cogu" src={cogumeloVermelho} alt="cogumelo" /> : <img className="imagem-cogu" src={cogumeloVazio} alt="cogumeloVazio" />}
+                  {selectedProduct.favoritos.includes(userLogged.id) ? (
+                    <img
+                      className="imagem-cogu"
+                      src={cogumeloVermelho}
+                      alt="cogumelo"
+                    />
+                  ) : (
+                    <img
+                      className="imagem-cogu"
+                      src={cogumeloVazio}
+                      alt="cogumeloVazio"
+                    />
+                  )}
                 </LikeButton>
                 <p>{selectedProduct.favoritos.length}</p>
               </div>
@@ -146,10 +162,18 @@ function Produtos() {
                   onChange={(e) => setQuantity(parseInt(e.target.value))}
                   min={1}
                 />
-
-                <button className="botoes" onClick={comprarProduto}>Adicionar ao carrinho</button>
+                {quantity <= selectedProduct.quantidade && (
+                  <button className="botoes" onClick={comprarProduto}>
+                    Adicionar ao carrinho
+                  </button>
+                )}
               </div>
-              <button className="botoes" onClick={closeModal}>Fechar</button>
+              {quantity > selectedProduct.quantidade && (
+                <p>Não temos produtos suficientes</p>
+              )}
+              <button className="botoes" onClick={closeModal}>
+                Fechar
+              </button>
             </div>
           </div>
         )}

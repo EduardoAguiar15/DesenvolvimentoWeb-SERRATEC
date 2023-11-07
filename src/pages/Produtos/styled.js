@@ -89,7 +89,7 @@ export const MainContent = styled.div`
       position: sticky;
       left: 50%;
       transform: translateX(-50%);
-      top: 50px;
+      top: 20px;
       background-color: white;
       border-radius: 12px;
 
@@ -124,6 +124,7 @@ export const MainContent = styled.div`
         font-weight: bold;
         margin-bottom: 12px;
         padding: 0 40px;
+        font-size: 12px;
       }
 
       .comprar{

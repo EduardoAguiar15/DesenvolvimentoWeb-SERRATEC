@@ -10,21 +10,36 @@ function Cadastro() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [emailExists, setEmailExists] = useState(false); // State to track if the email already exists
   const navigate = useNavigate();
 
   const addUser = async (nome, email, senha) => {
-    await api.post("/users", {
-      nome: nome,
-      email: email,
-      senha: senha,
-    });
+    try {
+      const response = await api.get("/users");
+      const existingUser = response.data.find((user) => user.email === email);
+      
+      if (existingUser) {
+        setEmailExists(true); 
+      } else {
+        await api.post("/users", {
+          nome: nome,
+          email: email,
+          senha: senha,
+        });
+        setEmailExists(false); 
+        navigate("/");
+       
+      }
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (nome == "" || email == "" || senha == "") {
-      return 0;
+    if (nome === "" || email === "" || senha === "") {
+      return;
     } else {
       addUser(nome, email, senha);
     }
@@ -33,7 +48,7 @@ function Cadastro() {
     setEmail("");
     setSenha("");
 
-    navigate("/");
+    
   };
 
   return (
@@ -64,6 +79,9 @@ function Cadastro() {
             />
             <button type="submit">Cadastrar</button>
           </form>
+          {emailExists && (
+            <p style={{ color: "red" }}>Este email já foi cadastrado.</p>
+          )}
           <div className="voltar">
             <Link to={`/`}>Voltar para o login</Link>
           </div>
