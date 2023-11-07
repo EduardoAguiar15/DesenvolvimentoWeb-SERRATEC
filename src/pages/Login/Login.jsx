@@ -7,6 +7,7 @@ import { Log } from "./styles";
 import { GlobalStyle } from "../../Global/globalStyle";
 import gif from "../../assets/Mario.gif";
 import Mario from "../../assets/MarioParado.jpg";
+import logo from "../../assets/logo.png";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -35,6 +36,7 @@ function Login() {
   return (
     <div>
       <Log>
+        <img className="logo" src={logo} alt="logo" />
         <div className="login-container">
           <h1>Login</h1>
           <img src={imagem} alt="marioGif" />

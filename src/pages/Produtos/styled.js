@@ -98,7 +98,7 @@ export const MainContent = styled.div`
         top: 30%;
       }
 
-      img {
+      .imagem-produto {
         width: 100%;
         height: 400px;
         border-radius: 12px;
@@ -106,6 +106,18 @@ export const MainContent = styled.div`
 
       h2 {
         margin: 15px 0 10px;
+      }
+
+      .favoritos{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+
+        p{
+          margin: 0;
+          padding: 0 0 0 12px;
+        }
       }
 
       p {
@@ -128,7 +140,7 @@ export const MainContent = styled.div`
         }
       }
 
-      button {
+      .botoes {
         padding: 12px;
         cursor: pointer;
         background-color: black;
@@ -159,3 +171,15 @@ export const Rodape = styled.footer`
     object-fit: cover;
   }
 `;
+
+export const LikeButton = styled.button`
+  background-color: white;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+
+  .imagem-cogu{
+    width: 40px;
+    height: 40px;
+  }
+`

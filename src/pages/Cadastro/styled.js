@@ -9,8 +9,13 @@ export const Cad = styled.div`
   height: 100vh;
   background-image: url(${imagem});
   background-size: 1920px 1080px;
-
   color: #fff;
+
+  .logo{
+    position: absolute;
+    top: 12px;
+    left: 20px;
+  }
 
   .cadastro-container {
     display: flex;

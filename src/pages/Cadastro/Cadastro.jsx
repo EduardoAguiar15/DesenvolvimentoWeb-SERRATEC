@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Cad } from "./styled";
 import Luigi from "../../assets/Luigi3.jpg";
 import { GlobalStyle } from "../../Global/globalStyle";
+import logo from "../../assets/logo.png";
 
 function Cadastro() {
   const [nome, setNome] = useState("");
@@ -38,6 +39,7 @@ function Cadastro() {
   return (
     <div>
       <Cad>
+        <img className="logo" src={logo} alt="logo" />
         <div className="cadastro-container">
           <h1>Cadastro</h1>
           <img src={Luigi} alt="Luigi" />
@@ -63,9 +65,7 @@ function Cadastro() {
             <button type="submit">Cadastrar</button>
           </form>
           <div className="voltar">
-
             <Link to={`/`}>Voltar para o login</Link>
-
           </div>
         </div>
       </Cad>

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../components/Authenticate/AuthContext";
 import { Navigate } from "react-router-dom";
 import { api } from "../../api";
-import { MainContent, Rodape } from "./styled";
+import { LikeButton, MainContent, Rodape } from "./styled";
 import footerImg from "../../assets/bloco-super-mario.png";
 import { formatPrice } from "../../utils/formatPrice";
 import { useCarrinho } from "../Carrinho/CarrinhoContext";
+import cogumeloVermelho from "../../assets/cogumelo-vermelho.png"
+import cogumeloVazio from "../../assets/cogumelo-vazio.png"
 
 function Produtos() {
   const { isLogged, userLogged } = useAuth();
@@ -62,6 +64,37 @@ function Produtos() {
     closeModal();
   };
 
+  const toggleFavorite = async () => {
+    if (!selectedProduct) return;
+
+    const productId = selectedProduct.id;
+
+    const updatedProdutos = produtos.map((produto) => {
+      if (produto.id === productId) {
+        if (produto.favoritos.includes(userLogged.id)) {
+          produto.favoritos = produto.favoritos.filter(
+            (id) => id !== userLogged.id
+          );
+        } else {
+          produto.favoritos.push(userLogged.id);
+        }
+      }
+      return produto;
+    });
+
+    setProdutos(updatedProdutos);
+
+    await api.put(`/produtos/${productId}`, {
+      nome: selectedProduct.nome,
+      preco: selectedProduct.preco,
+      quantidade: selectedProduct.quantidade,
+      descricao: selectedProduct.descricao,
+      imgurl: selectedProduct.imgurl,
+      favoritos: updatedProdutos.find((produto) => produto.id === productId)
+        .favoritos,
+    });
+  };
+
   return (
     <>
       <MainContent>
@@ -93,11 +126,18 @@ function Produtos() {
         {selectedProduct && (
           <div className="modal">
             <div className="modal-content">
-              <img src={selectedProduct.imgurl} alt="imagemDoProduto" />
+              <img className="imagem-produto" src={selectedProduct.imgurl} alt="imagemDoProduto" />
               <h2>{selectedProduct.nome}</h2>
+              <div className="favoritos">
+                <LikeButton onClick={toggleFavorite}>
+                  {selectedProduct.favoritos.includes(userLogged.id)
+                    ?  <img className="imagem-cogu" src={cogumeloVermelho} alt="cogumelo" /> : <img className="imagem-cogu" src={cogumeloVazio} alt="cogumeloVazio" />}
+                </LikeButton>
+                <p>{selectedProduct.favoritos.length}</p>
+              </div>
               <p>Preço: {formatPrice(selectedProduct.preco)}</p>
               <p>{selectedProduct.descricao}</p>
-                <label>Selecione a quantidade</label>
+              <label>Selecione a quantidade</label>
               <div className="comprar">
                 <input
                   className="input-quantidade"
@@ -107,9 +147,9 @@ function Produtos() {
                   min={1}
                 />
 
-                <button onClick={comprarProduto}>Adicionar ao carrinho</button>
+                <button className="botoes" onClick={comprarProduto}>Adicionar ao carrinho</button>
               </div>
-              <button onClick={closeModal}>Fechar</button>
+              <button className="botoes" onClick={closeModal}>Fechar</button>
             </div>
           </div>
         )}
