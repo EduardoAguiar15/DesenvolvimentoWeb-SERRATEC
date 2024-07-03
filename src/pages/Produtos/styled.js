@@ -133,7 +133,7 @@ export const MainContent = styled.div`
         margin-bottom: 10px;
         gap: 5px;
         .input-quantidade{
-          width: 25%;
+          width: 30%;
         }
 
         button{
