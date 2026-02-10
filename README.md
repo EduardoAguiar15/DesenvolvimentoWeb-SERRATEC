@@ -29,7 +29,7 @@ O objetivo foi criar uma aplicação que simula uma loja de jogos retrô, permit
 - Simulação de backend com DB JSON
 
 
-## ⚙️ Como rodar:
+# ⚙️ Como rodar:
 
 Clone este repositório e siga os passos abaixo:
 
