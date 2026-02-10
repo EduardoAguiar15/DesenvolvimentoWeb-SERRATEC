@@ -10,44 +10,46 @@ O objetivo foi criar uma aplicação que simula uma loja de jogos retrô, permit
 
 
 ## 🚀 Tecnologias utilizadas:
-- React
-- React Router DOM
-- Styled-components
-- JSON Server
-- DB JSON (simulação de banco de dados)
+- **React**
+- **React Router DOM**
+- **Styled-components**
+- **JSON Server**
+- **DB JSON (simulação de banco de dados)**
 
 
 ## 📂 Funcionalidades:
-- Listagem de jogos retrô
+- **Listagem de jogos retrô**
 
-- Navegação entre páginas com React Router
+- **Navegação entre páginas com React Router**
 
-- Estilização com styled-components
+- **Estilização com styled-components**
 
-- Consumo de dados via JSON Server
+- **Consumo de dados via JSON Server**
 
-- Simulação de backend com DB JSON
+- **Simulação de backend com DB JSON**
 
 
 ## ⚙️ Como rodar:
 
 
-Clone este repositório e siga os passos abaixo:
+- **Clonar o repositório**
+```bash
+git clone https://github.com/EduardoAguiar15/DesenvolvimentoWeb-SERRATEC.git
+```
 
-
-Instalar dependências:
+- **Instalar dependências**
 ```bash
 npm install
 ```
 
 
-Iniciar o servidor fake na porta 3000:
+- **Iniciar o servidor fake na porta 3000**
 ```bash
 json-server --watch -p 3000 db.json
 ```
 
 
-Rodar a aplicação React:
+- **Rodar a aplicação React**
 ```bash
 npm run dev
 ```
