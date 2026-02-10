@@ -31,17 +31,21 @@ O objetivo foi criar uma aplicação que simula uma loja de jogos retrô, permit
 
 ## ⚙️ Como rodar:
 
+
 Clone este repositório e siga os passos abaixo:
+
 
 Instalar dependências:
 ```bash
 npm install
 ```
 
+
 Iniciar o servidor fake na porta 3000:
 ```bash
 json-server --watch -p 3000 db.json
 ```
+
 
 Rodar a aplicação React:
 ```bash
